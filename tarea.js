@@ -53,16 +53,30 @@ const sumArray = (array) => {
   // Función calculateAverage: Calcular el promedio de un array de números
   // Parámetros: array (Array) - Un array de números
   // Devuelve: Number - El promedio de los números en el array
-  const calculateAverage = () => {
-    
-  };
+const calculateAverage = (array) => {
   
+  if (array.length === 0) {
+    return undefined;
+  }
+
+  const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue);
+
+  const average = sum / array.length;
+
+  return average; 
+};
+
+
   // Función sortNumbersAscending: Ordenar un array de números de forma ascendente
   // Parámetros: array (Array) - Un array de números
   // Devuelve: Array - Un nuevo array con los números ordenados de forma ascendente
-  const sortNumbersAscending = () => {
-    
-  };
+ const sortNumbersAscending = (array) => {
+ e
+  const sortedArray = array.slice().sort((a, b) => a - b);
+  return sortedArray;
+};
+
+
   
   // Función findFirstElement: Encontrar el primer elemento que cumple una condición en un array
   // Parámetros: 
