@@ -2,30 +2,52 @@
 // Función sumArray: Suma de todos los elementos de un array
 // Parámetros: array (Array) - Un array de números
 // Devuelve: Number - La suma de todos los elementos del array
-const sumArray = () => {
-    
+
+const sumArray = (array) => {
+    if (array.length === 0) {
+      return 0;
+    }
+  
+    const sum = array.reduce((accumulator, currentValue) => accumulator + currentValue);
+  
+    return sum;
   };
+  
+  
   
   // Función filterEvenNumbers: Filtrar números pares de un array
   // Parámetros: array (Array) - Un array de números
   // Devuelve: Array - Un nuevo array con solo los números pares del array original
-  const filterEvenNumbers = () => {
-    
+
+  const filterEvenNumbers = (array) => {
+    const evenNumbers = array.filter(num => num % 2 === 0);
+    return evenNumbers; 
   };
+  
   
   // Función findMaxNumber: Encontrar el mayor número en un array
   // Parámetros: array (Array) - Un array de números
   // Devuelve: Number - El mayor número en el array
-  const findMaxNumber = () => {
-    
+  const findMaxNumber = (array) => {
+    if (array.length === 0) {
+      return undefined;
+    }
+  
+    const maxNumber = Math.max(...array);
+  
+    return maxNumber;
   };
+  
   
   // Función toUpperCaseStrings: Convertir un array de strings a mayúsculas
   // Parámetros: array (Array) - Un array de strings
   // Devuelve: Array - Un nuevo array con todas las strings convertidas a mayúsculas
-  const toUpperCaseStrings = () => {
-    
+  const toUpperCaseStrings = (array) => {
+
+    const upperCaseArray = array.map(str => str.toUpperCase());
+    return upperCaseArray; 
   };
+  
 
   
   // Función calculateAverage: Calcular el promedio de un array de números
