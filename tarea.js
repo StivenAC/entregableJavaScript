@@ -83,50 +83,54 @@ const calculateAverage = (array) => {
   // - array (Array) - Un array de elementos
   // - condition (Function) - Una función de condición que devuelve true o false
   // Devuelve: Any - El primer elemento que cumple con la condición, o undefined si ninguno lo hace
-  const findFirstElement = () => {
-    
-  };
+const encontrarPrimerElemento = (array, condicion) => {
+  for (let elemento of array) {
+    if (condicion(elemento)) {
+      return elemento; 
+    }
+  }
+  return undefined; 
+};
   
   // Función countElements: Contar la cantidad de elementos en un array
   // Parámetros: array (Array) - Un array de elementos
   // Devuelve: Number - La cantidad de elementos en el array
-  const countElements = () => {
-    
-  };
+ const contarElementos = (array) => {
+  const cantidad = array.length;
+  return cantidad; 
+};
   
   // Función concatenateArrays: Concatenar dos arrays
   // Parámetros: 
   // - array1 (Array) - El primer array a concatenar
   // - array2 (Array) - El segundo array a concatenar
   // Devuelve: Array - Un nuevo array que es la concatenación de los dos arrays proporcionados
-  const concatenateArrays = () => {
-    
-  };
+const concatenarArrays = (array1, array2) => {
+
+  const arrayConcatenado = array1.concat(array2);
+  return arrayConcatenado; 
+};
   
   // Función squareNumbers: Calcular el cuadrado de cada número en un array
   // Parámetros: array (Array) - Un array de números
   // Devuelve: Array - Un nuevo array con los cuadrados de los números en el array original
-  const squareNumbers = () => {
-    
-  };
+ const squareNumbers = (array) => { 
+  const arrayCuadrado = array.map(numero => numero ** 2);
+  return arrayCuadrado; 
+};
 
   // Función flecha para agregar habilidades a un jugador de un juego
 const agregarHabilidad = (jugador, nuevaHabilidad) => {
-    /*
-    Parámetros de entrada:
-    - jugador: objeto que representa al jugador del juego.
-    - nuevaHabilidad: string que representa la nueva habilidad a agregar al jugador.
-
-    Lo que hace la función:
-    Esta función recibe un objeto de jugador y una nueva habilidad como entrada.
-    Verifica si el jugador tiene un arreglo de habilidades. Si no lo tiene, lo crea.
-    Luego, agrega la nueva habilidad al arreglo de habilidades del jugador si esta no existe
-
-    Valor de retorno:
-    Retorna el objeto jugador modificado con la nueva habilidad agregada.
-    */
+  
+    if (!jugador.habilidades) {
+        jugador.habilidades = []; 
+    }
     
-   
+    if (!jugador.habilidades.includes(nuevaHabilidad)) {
+        jugador.habilidades.push(nuevaHabilidad);
+    }
+    
+    return jugador;
 };
 
 // Función para calcular la duración total de reproducción de todas las películas.
@@ -135,7 +139,14 @@ const agregarHabilidad = (jugador, nuevaHabilidad) => {
 // Retorna:
 // - Un número que representa la duración total de todas las películas en minutos.
 const calcularDuracionTotal = (peliculas) => {
+ 
+    let duracionTotal = 0;
     
+    for (let pelicula of peliculas) {
+       
+        duracionTotal += pelicula.duracion;
+    }
+    return duracionTotal; 
 };
 
 
@@ -147,7 +158,10 @@ const calcularDuracionTotal = (peliculas) => {
 // Retorna:
 // - Un array de objetos que representan películas que coinciden con el título y el género especificados.
 const buscarPeliculas = (peliculas, titulo, genero) => {
+   
+    const peliculasFiltradas = peliculas.filter(pelicula => pelicula.titulo.toLowerCase().includes(titulo.toLowerCase()) && pelicula.genero.toLowerCase() === genero.toLowerCase());
     
+    return peliculasFiltradas; 
 };
 
 // Función para calcular el promedio de puntajes de las películas.
@@ -156,7 +170,15 @@ const buscarPeliculas = (peliculas, titulo, genero) => {
 // Retorna:
 // - Un número que representa el promedio de puntajes de todas las películas.
 const calcularPromedioPuntajes = (peliculas) => {
-   
+    if (peliculas.length === 0) {
+        return 0; 
+    }
+
+    const sumaPuntajes = peliculas.reduce((acumulador, pelicula) => acumulador + pelicula.puntaje, 0);
+    
+    const promedio = sumaPuntajes / peliculas.length;
+    
+    return promedio;
 };
 
 // Función para filtrar películas por año de lanzamiento.
@@ -176,9 +198,11 @@ const filtrarPorAño = (peliculas, año) => {
 // - genero: String que representa el género de las películas a considerar.
 // Retorna:
 // - Un número que representa el promedio de duración de las películas del género especificado.
-const calcularPromedioDuracionPorGenero = (peliculas, genero) => {
-    // Filtrar las películas por género.
+const filtrarPorAño = (peliculas, año) => {
+  
+    const peliculasFiltradas = peliculas.filter(pelicula => pelicula.año === año);
     
+    return peliculasFiltradas; 
 };
 
 
