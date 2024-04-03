@@ -188,8 +188,10 @@ const calcularPromedioPuntajes = (peliculas) => {
 // Retorna:
 // - Un array de objetos que representan películas lanzadas en el año especificado.
 const filtrarPorAño = (peliculas, año) => {
-    // Filtrar las películas por año de lanzamiento.
+  
+    const peliculasFiltradas = peliculas.filter(pelicula => pelicula.año === año);
     
+    return peliculasFiltradas; 
 };
 
 // Función para calcular el promedio de duración de las películas por género.
@@ -198,11 +200,16 @@ const filtrarPorAño = (peliculas, año) => {
 // - genero: String que representa el género de las películas a considerar.
 // Retorna:
 // - Un número que representa el promedio de duración de las películas del género especificado.
-const filtrarPorAño = (peliculas, año) => {
+onst calcularPromedioDuracionPorGenero = (peliculas, genero) => {
   
-    const peliculasFiltradas = peliculas.filter(pelicula => pelicula.año === año);
-    
-    return peliculasFiltradas; 
+    const peliculasDelGenero = peliculas.filter(pelicula => pelicula.genero === genero);
+    const sumaDuraciones = peliculasDelGenero.reduce((acumulador, pelicula) => {
+        return acumulador + pelicula.duracion;
+    }, 0);
+
+    const promedioDuracion = sumaDuraciones / peliculasDelGenero.length;
+
+    return promedioDuracion;
 };
 
 
